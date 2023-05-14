@@ -1,9 +1,12 @@
 import Swal from 'sweetalert2'
 import { useLoaderData } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const BookNow = () => {
     const service = useLoaderData();
     const { _id, title, price } = service;
+    const {user} = useContext(AuthContext)
 
     const handelBooking = e=>{
         e.preventDefault();
@@ -54,7 +57,7 @@ const BookNow = () => {
                         <input type="text" name='price' readOnly defaultValue={"$"+price} className="input text-[#9ca3af]" />
                     </div>
                     <div className="form-control">
-                        <input type="email" name='email' placeholder="Your Email" className="input text-[#9ca3af]" />
+                        <input type="email" name='email' defaultValue={user?.email} className="input text-[#9ca3af]" />
                     </div>
                 </div>
                 <div className="form-control">

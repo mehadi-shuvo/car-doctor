@@ -5,7 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const BookNow = () => {
     const service = useLoaderData();
-    const { _id, title, price } = service;
+    const { _id, title, price,img } = service;
     const {user} = useContext(AuthContext)
 
     const handelBooking = e=>{
@@ -18,7 +18,7 @@ const BookNow = () => {
         const serviceId = _id;
 
         const bookingInfo = {
-            name,email, date, message,price,title,serviceId
+            name,email, date, message,price,title,serviceId,img
         }
         fetch('http://localhost:3000/booking', {
             method: 'POST',
